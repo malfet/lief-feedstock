@@ -21,8 +21,7 @@ cmake .. -LAH -G "Ninja"  \
   -DPYTHON_LIBRARIES="${PREFIX}"/lib/libpython${PY_VER}.dylib  \
   -DPYTHON_LIBRARY="${PREFIX}"/lib/libpython${PY_VER}.dylib  \
   -DPYTHON_EXECUTABLE="${PREFIX}"/bin/python  \
-  -DPYTHON_VERSION=${PY_VER}  \
-  "${CMAKE_ARGS}"
+  -DPYTHON_VERSION=${PY_VER}
 
 if [[ ! $? ]]; then
   echo "configure failed with $?"

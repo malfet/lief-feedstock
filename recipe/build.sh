@@ -2,12 +2,6 @@
 
 set -exuo pipefail
 
-if [[ ${target_platform} == osx-64 ]]; then
-  CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
-elif [[ ${target_platform} == linux-ppc64le ]]; then
-  CMAKE_ARGS="${CMAKE_ARGS} -DLIEF_LOGGING=OFF"
-fi
-
 # Please keep this comment around. It may help if this problem reoccurs.
 # if [[ ${target_platform} =~ linux-* ]]; then
 #   # TODO: remove this when lief's internal pybind is updated (with lief=0.10.0 probably)
@@ -20,7 +14,7 @@ fi
 mkdir build || true
 pushd build
 
-cmake ${CMAKE_ARGS} -LAH -G "Ninja"  \
+cmake -LAH -G "Ninja"  \
   -DCMAKE_BUILD_TYPE="Release"  \
   -DBUILD_STATIC_LIBS=OFF  \
   -DBUILD_SHARED_LIBS=ON  \
